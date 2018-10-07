@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>票据入库</title>
+<link rel="stylesheet" type="text/css" href="/template/css/commonnew.css" />
+<link rel="stylesheet" type="text/css" href="/template/css/yxzy.css" />
+<link rel="stylesheet" href="/template/resource/plugins/artDialog/style.css" />
+
+<script type="text/javascript" src="/template/resource/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/template/resource/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/template/resource/json2.js"></script>
+<script type="text/javascript" src="/template/js/common.js"></script>
+<script type="text/javascript" src="/template/js/common/crud.js"></script>
+<script type="text/javascript" src="/template/js/common/utils.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/artDialog/jquery.artDialog.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/artDialog/plugins/iframeTools.js"></script>
+
+<!-- 进度条 -->
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/progressbar/css/custom_progressbar.css" />
+<script type="text/javascript" src="/template/resource/plugins/progressbar/custom_progressbar.js" ></script>
+<script type="text/javascript" src="/template/resource/plugins/My97DatePicker/WdatePicker.js"></script>
+
+<!-- 表单校验 -->
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/niceValidator/popfloat.css" />
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/jquery-popfloat.js"></script>
+<link rel="stylesheet" href="/template/resource/plugins/niceValidator/style.css" />
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/jquery.validator.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/local/zh_CN.js"></script>
+
+<script type="text/javascript" src="/template/js/paperManage/paperInStorage.js"></script>
+</head>
+<body>
+<form id="mainForm" data-validator-option="{theme:'float-4-1'}">
+	<div class="main_bg m10" style="min-height: 450px;">
+	  	<h1 class="main_head"><span class="head_hover">票据入库</span></h1>
+	  	<ul class="m10" style="margin-left: 15%;">
+  			<li>
+	  			<span>票据类型</span>
+				<label class='xiala'>
+					<input id="typeNameShow" name="typeNameShow" type="text" class="gy_inp"  readonly="readonly"/> 
+					<input id="typeName" name="typeName" type='hidden'/>
+                    <em class="inp_down"></em>
+				</label>
+  			</li>
+  			<li>
+	  			<span>票据代码</span>
+  				<input class="gy_inp" id="paperCode" name="paperCode" data-rule="required;" />
+  			</li>
+  			<li style="width: 100%">
+	  			<span>接收部门</span>
+				<label class='xiala'>
+					<input id="deptNameShow" name="deptNameShow" type="text" class="gy_inp"  readonly="readonly"/> 
+					<input id="deptName" name="deptName" type='hidden'/>
+                    <em class="inp_down"></em>
+				</label>
+  			</li>
+  			<li>
+	  			<span>票据开始序号</span>
+  				<input class="gy_inp" id="startCode" name="startCode" data-rule="required;number;" />
+  			</li>
+  			<li>
+	  			<span>票据结束序号</span>
+  				<input class="gy_inp" id="endCode" name="endCode" data-rule="required;number;" />
+  			</li>
+  			<li>
+	  			<span>票据最大金额</span>
+  				<input class="gy_inp" id="maxAmount" name="maxAmount" data-rule="required;number;"/>
+  			</li>
+  			<li>
+	  			<span>票据数量</span>
+  				<input class="gy_inp" id="paperSize" name="paperSize" data-rule="required;integer;range[0~]"  />
+  			</li>
+  			<li style="width: 100%">
+	  			<span>备注</span>
+  				<textarea name="paperDesc" id="paperDesc" type="text" class="gy_inp" style="height: 60px;width: 620px;"></textarea>
+  			</li>
+  			<li style="width: 100%">&nbsp;</li>
+	  	</ul>
+	  	<div class="clear"></div>
+		<div class="c_btn mt20" id="btnDiv" align="center">
+			<a class="gy_btn btn_b" id="saveBtn">保存</a>
+			<a class="gy_btn close_btn" id="cancleBtn">取消</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

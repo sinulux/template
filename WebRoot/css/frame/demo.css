@@ -1,0 +1,23 @@
+body {
+	font: 14px/1.11 'Microsoft Yahei';
+}
+a {
+	cursor: pointer;
+}
+.menu {
+	float: left;
+	color: blue;
+}
+.menudiv {
+	height: 400px;
+	float: left;
+	border-width: 1px;
+	border-style: solid;
+	margin-right: 10px;
+}
+.container {
+	float: left;
+	width: 800px;
+	border-width: 1px;
+	border-style: solid;
+}

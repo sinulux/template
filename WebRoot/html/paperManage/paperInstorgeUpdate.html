@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+<title>票据修改</title>
+<link rel="stylesheet" type="text/css" href="/template/css/commonnew.css" />
+<link rel="stylesheet" href="/template/resource/plugins/artDialog/style.css" />
+<!--菜单导航-->
+<script type="text/javascript" src="/template/resource/jquery-1.10.2.min.js"></script>
+<!-- my97日期 -->
+<script type="text/javascript" src="/template/resource/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/template/resource/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/template/resource/json2.js"></script>
+<script type="text/javascript" src="/template/js/common.js"></script>
+<script type="text/javascript" src="/template/js/common/utils.js"></script>
+<script type="text/javascript" src="/template/js/common/crud.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/artDialog/jquery.artDialog.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/artDialog/plugins/iframeTools.js"></script>
+
+<!-- 进度条 -->
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/progressbar/css/custom_progressbar.css" />
+<script type="text/javascript" src="/template/resource/plugins/progressbar/custom_progressbar.js" ></script>
+
+<!-- 表格 -->
+<script type="text/javascript" src="/template/resource/plugins/table/custom_table.js"></script>
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/table/style.css" />
+<!-- 表单校验 -->
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/niceValidator/popfloat.css" />
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/jquery-popfloat.js"></script>
+<link rel="stylesheet" href="/template/resource/plugins/niceValidator/style.css" />
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/jquery.validator.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/local/zh_CN.js"></script>
+
+<script type="text/javascript" src="/template/js/paperManage/paperInStorageUpdate.js"></script>
+
+</head>
+<body>
+
+
+<div id="mainDiv">
+
+
+<!--查询条件-->
+<form action="" id="myForm" name = "myForm">
+<div class="main_bg m10">
+	<h1 class="main_head"><span class="head_hover">查询条件</span></h1>
+    <div class="cxtj">
+        <ul>
+            <li style="width:33%" ><span>接受部门：</span>
+            	<label class='xiala'>
+					<input id="deptNameShow" name="deptNameShow" type="text" class="gy_inp"  readonly="readonly"/> 
+					<input id="deptName" name="deptName" type='hidden'/>
+                    <em class="inp_down"></em>
+				</label>
+            </li>
+            <li style="width:33%" ><span>票据类别：</span>
+            	<label class='xiala'>
+					<input id="typeNameShow" name="typeNameShow" type="text" class="gy_inp"  readonly="readonly"/> 
+					<input id="typeName" name="typeName" type='hidden'/>
+                    <em class="inp_down"></em>
+				</label>
+            </li>
+            <li style="width:33%" ><span>票据代码：</span><input id="paperCode" name="paperCode" type="text" class="gy_inp" value=""></li>
+            <li style="width:33%"  ><span>开始序号：</span><input id="startCode" name="startCode" type="text" class="gy_inp" value=""></li>
+            <li style="width:33%" ><span>结束序号：</span><input id="endCode" name="endCode" type="text" class="gy_inp" value=""></li>
+            <div class="clear"></div>
+        </ul>
+        <div class="dw"><a class="gy_btn btn_b" id = "queryBtn">查询</a>
+        <a class="gy_btn btn_b" id = "distributeBtn">分发</a>
+        <a class="gy_btn btn_b" id = "guildBtn">退库</a>
+        <a class="gy_btn btn_b" id = "lingQuBtn">领取</a>
+        <a class="gy_btn btn_b" id = "reBackBtn">退回</a>
+        </div>
+<!--    <a class="gy_btn btn_g ml10">重置</a>      -->
+    </div>
+</div>
+
+<!--查询操作日志列表-->
+<div class="main_bg m10">
+	<h1 class="main_head">
+        <span class="fl head_hover">查询票据列表</span>
+        <div class="clear"></div>
+    </h1>
+    <!--表格-->
+    <div id="mainForm">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="gy_table mt10" id="paperTable">
+      <tr>
+        <th scope="col">序号 </th>
+        <th scope="col">票据类别</th>
+        <th scope="col">票据代码</th>
+        <th scope="col">票据号码</th>
+        <th scope="col">票据状态</th>
+      </tr>
+      <tbody id="paperTbody"></tbody>
+    </table>
+    <!--分页-->
+   <div class="page" id="paperTablePageDiv"></div>
+  </div>
+    <div class="clear"></div>
+</div>
+<!--修改-->
+<div class="main_bg m10">
+	<h1 class="main_head"><span class="head_hover">修改</span></h1>
+    <div class="cxtj">
+        <ul>
+            <li style="width:33%" ><span>票据类别：</span>
+            	<label class='xiala'>
+					<input id="typeName2Show" name="typeName2Show" type="text" class="gy_inp"  readonly="readonly"/> 
+					<input id="typeName2" name="typeName2" type='hidden'/>
+                    <em class="inp_down"></em>
+				</label>
+            </li>
+            <li style="width:33%" ><span>票据代码：</span><input id="paperCode2" name="paperCode2" type="text" class="gy_inp" value=""></li>
+            <div class="clear"></div>
+        </ul>
+        <div class="dw"><a class="gy_btn btn_b" id = "updateBtn">修改</a></div>
+    </div>
+</div>
+</form>
+</div>                  
+</body>
+</html>

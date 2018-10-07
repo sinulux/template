@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>维护管理区域</title>
+<link rel="stylesheet" type="text/css" href="/template/css/commonnew.css" />
+<link rel="stylesheet" type="text/css" href="/template/css/commonnew.css" />
+<link rel="stylesheet" type="text/css" href="/template/css/yxzy.css" />
+<link rel="stylesheet" href="/template/resource/plugins/artDialog/style.css" />
+
+<script type="text/javascript" src="/template/resource/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/template/resource/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/template/resource/json2.js"></script>
+<script type="text/javascript" src="/template/js/common.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/artDialog/jquery.artDialog.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/artDialog/plugins/iframeTools.js"></script>
+<!-- 分页表格 -->
+<script type="text/javascript" src="/template/resource/plugins/table/custom_table.js"></script>
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/table/style.css" />
+<!-- 进度条 -->
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/progressbar/css/custom_progressbar.css" />
+<script type="text/javascript" src="/template/resource/plugins/progressbar/custom_progressbar.js" ></script>
+<script type="text/javascript" src="/template/resource/plugins/My97DatePicker/WdatePicker.js"></script>
+<!-- 树的插件 -->
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/dhtmlxTree/codebase/dhtmlxtree.css"/>
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/dhtmlxTree/codebase/skins/dhtmlxtree_dhx_skyblue.css"/>
+<script src="/template/resource/plugins/dhtmlxTree/codebase/dhtmlxcommon.js" type="text/javascript"></script>
+<script src="/template/resource/plugins/dhtmlxTree/codebase/dhtmlxtree.js" type="text/javascript"></script>
+<script src="/template/resource/plugins/dhtmlxTree/codebase/ext/dhtmlxtree_ed.js" type="text/javascript"></script>
+<script src="/template/resource/plugins/dhtmlxTree/codebase/ext/dhtmlxtree_json.js" type="text/javascript"></script>
+
+<!-- 表单校验 -->
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/niceValidator/popfloat.css" />
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/jquery-popfloat.js"></script>
+<link rel="stylesheet" href="/template/resource/plugins/niceValidator/style.css" />
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/jquery.validator.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/niceValidator/local/zh_CN.js"></script>
+<script type="text/javascript" src="/template/js/common/crud.js"></script>
+<script type="text/javascript" src="/template/js/common/utils.js"></script>
+<script type="text/javascript" src="/template/js/common/dateUtils.js"></script>
+<script type="text/javascript" src="/template/js/addressManager/areaManager.js"></script>
+</head>
+<body>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td valign="top" style="width: 280px;">
+				<div class="main_bg">
+					<h1 class="main_head"><span class="head_hover">管理区域目录</span></h1>
+					<input type="text" id="areaNames" name="areaNames" class="gy_inp mt5" placeholder="请输入管理区域名称" />
+					<a href="#" style=" margin-left:-25px;" id="btnSearch"><img class="mt5" src="../../images/search_ico.png"></a>
+					<a href="#" id="btnRefresh"><img class="mt5" src="../../images/refresh_ico.png"></a>
+					<!--区域目录树 begin--><br />
+					<div id="areasTree" style="height:504px;width: 100%; overflow: auto;"></div>
+				</div>
+			</td>
+			<td valign="top">
+				<form id="mainForm" name="mainForm" data-validator-option="{theme:'float-4-1'}">
+					<input type="hidden" id="tempItemData" name="tempItemData" />
+					<input name="oprType" id="oprType" type="hidden" />
+					<div class="main_bg ml10">
+					  	<h1 class="main_head"><span class="head_hover">管理区域维护</span>
+						  	<div class="fr">
+						  		<a class="gy_btn btn_b" id="addBtn">新增区域</a>
+						  		<a class="gy_btn btn_b" id="modifyBtn">修改区域</a>
+						  		<a class="gy_btn btn_b" id="delBtn">删除区域</a>
+						  	</div>
+					  	</h1>
+        				<ul class="ml20 mt10" style="height: 500px;">
+            				<li style="width:50%">
+            					<span>名称：</span>
+            					<input name="areaName" id="areaName" type="text" class="gy_inp" data-rule="required" />
+            				</li>
+            				<li style="width:50%">
+            					<span>编码：</span>
+            					<input name="areaCode" id="areaCode" type="text" class="gy_inp" data-rule="required,number" />
+            				</li>
+            				<li style="width:50%">
+            					<span>唯一标识：</span>
+            					<input name="onlyCode" id="onlyCode" type="text" class="gy_inp" />
+            				</li>
+            				<li style="width:50%">
+            					<span>区域经理：</span>
+            					<input name="areaManager" id="areaManager" type="text" class="gy_inp" />
+            				</li>
+            				<li style="width:50%">
+            					<span>类别：</span>
+            					<label class='xiala'>
+									<input id="areaTypeShow" name="areaTypeShow" type="text" class="gy_inp" readonly="readonly" /> 
+									<input id="areaType" name="areaType" type='hidden' />
+				                    <em class="inp_down"></em>
+								</label>
+            				</li>
+            				<li style="width:50%">
+            					<span>城乡分类：</span>
+            					<label class='xiala'>
+									<input id="areaCityTypeShow" name="areaCityTypeShow" type="text" class="gy_inp"  readonly="readonly"/> 
+									<input id="areaCityType" name="areaCityType" type='hidden'/>
+				                    <em class="inp_down"></em>
+								</label>
+            				</li>
+            				<li style="width:50%">
+            					<span>序号：</span>
+            					<input class="gy_inp" id="seqCode" name="seqCode" />
+            				</li>
+            				<li style="width:50%;">
+            					<span>CA类型：</span>
+            					<label class='xiala'>
+									<input id="caAreaTypeShow" name="caAreaTypeShow" type="text" class="gy_inp"  readonly="readonly"/> 
+									<input id="caAreaType" name="caAreaType" type='hidden'/>
+				                    <em class="inp_down"></em>
+								</label>
+            				</li>
+            				<li style="width:50%">
+            					<span>房屋类型：</span>
+            					<label class='xiala'>
+									<input id="houseTypeShow" name="houseTypeShow" type="text" class="gy_inp"  readonly="readonly"/> 
+									<input id="houseType" name="houseType" type='hidden'/>
+				                    <em class="inp_down"></em>
+								</label>
+            				</li>
+            				<li style="width:50%;">
+            					<span>停播日：</span>
+            					<input class="gy_inp inp_time" readonly="readonly" id="analogSignalExpDate" name="analogSignalExpDate" data-rule="required;" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'analogSignalExpDate\')}'})" />
+            				</li>
+            				<!-- <li style="width:50%;">
+            					<span>光节点：</span>
+            					<input class="gy_inp" id="lightNode" name="lightNode" data-rule="required;" />
+            				</li> -->
+            				<li style="width:50%;" id="jzw">
+            					<span>是否已拆除：</span>
+            					<label class='xiala'>
+									<input id="isDeleteSelectShow" name="isDeleteSelectShow" type="text" class="gy_inp"  readonly="readonly"/> 
+									<input id="isDeleteSelect" name="isDeleteSelect" type='hidden'/>
+				                    <em class="inp_down"></em>
+								</label>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>有序资源管理</title>
+<link rel="stylesheet" type="text/css" href="/template/css/commonnew.css" />
+<link rel="stylesheet" type="text/css" href="/template/css/yxzy.css" />
+<link rel="stylesheet" type="text/css" href="/template/css/jquery.autocomplete.css" />
+<link rel="stylesheet" href="/template/resource/plugins/artDialog/style.css" />
+
+<script type="text/javascript" src="/template/resource/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/template/resource/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/template/resource/json2.js"></script>
+<script type="text/javascript" src="/template/resource/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="/template/js/common.js"></script>
+<script type="text/javascript" src="/template/js/common/utils.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/artDialog/jquery.artDialog.js"></script>
+<script type="text/javascript" src="/template/resource/plugins/artDialog/plugins/iframeTools.js"></script>
+<!-- 分页表格 -->
+<script type="text/javascript" src="/template/resource/plugins/table/custom_table.js"></script>
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/table/style.css" />
+<!-- 进度条 -->
+<link rel="stylesheet" type="text/css" href="/template/resource/plugins/progressbar/css/custom_progressbar.css" />
+<script type="text/javascript" src="/template/resource/plugins/progressbar/custom_progressbar.js" ></script>
+
+<script type="text/javascript" src="/template/js/resManage/orderResManage.js"></script>
+<style type="text/css">
+.only_for_print{display: none}
+.print_text{
+	border-bottom:1px solid #000000;
+	width:170px;
+	overflow:hidden
+}
+</style>
+</head>
+
+<body>
+	<!--查询条件 begin-->
+	<div class="main_bg m10">
+		<h1 class="main_head"><span class="head_hover">查询条件</span></h1>
+		<div class="cxtj">
+			<ul>
+				<li style="width:50%"><span>资源库</span>
+					<label class='xiala' id="resStoreFlag">
+						<input id="storeName" name="storeName" type='text' class='gy_inp' readonly="readonly"/> 
+						<input type="hidden" id="storeId" name="storeId" />
+                        <em class="inp_down"></em>
+					</label>
+				</li>
+				<li style="width:50%"><span>资源串码</span>
+					<input name="INST_CODE" id="INST_CODE" type="text" class="gy_inp" />
+				</li>
+				<li style="width:50%"><span>资源名称</span>
+					<label class='xiala' id="resLa">
+						<input id="RES_NAME" name="RES_NAME" type='text' class='gy_inp' readonly='readonly'/> 
+                        <em class="inp_up"></em>
+					</label>
+				</li>
+				<li style="width:50%"><span>实例状态</span>
+					<label class='xiala' id="instStatus">
+						<input id="STATUS_SHOW" name="STATUS_SHOW" type='text' class='gy_inp'/> 
+						<input type="hidden" id="STATUS_CD" name="STATUS_CD" />
+                        <em class="inp_down"></em>
+					</label>
+				</li>
+			</ul>
+			<div class="clear"></div>
+			<div class="dw">			
+				<a class="gy_btn btn_b" id="searchBtn">查询</a>
+				<a class="gy_btn btn_g" id="resetBtn">重置</a>
+			</div>
+		</div>
+	</div>
+	<!--查询结果 begin-->
+	<div class="main_bg m10">
+		<h1 class="main_head"><span class="head_hover">有序资源列表</span>
+			<div class="fr">
+				<form id="myForm" method="post" action=""></form>				
+				<a class="gy_btn btn_b" id="update">修改资源</a>
+				<a class="gy_btn btn_b" id="excel">导出清单</a>
+			</div>
+		</h1>
+		<div class="jj_table" id="mainForm">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0"
+				class="gy_table" id="resTable">
+				<thead id="resThead">
+					<tr>
+						<th width="100">选择</th>
+						<th width="200">资源库名称</th>
+						<th width="200">资源名称</th>
+						<th width="300">资源串码</th>
+						<th width="150">实例状态</th>
+						<th width="150">受理状态</th>
+						<th width="150">采购合同号</th>
+						<th width="150">新/旧</th>
+					</tr>
+				</thead>
+				<tbody id="resTbody"></tbody>
+			</table>
+			<!--分页 begin-->
+			<div class="page" id="resTablePageDiv"></div>
+		</div>
+	</div>
+	
+	<OBJECT style="display: none;" ID="jatoolsPrinter"
+		CLASSID="CLSID:B43D3361-D075-4BE2-87FE-057188254255"
+		codebase="jatoolsPrinter.cab#version=8,6,0,0"> 
+	</OBJECT>	
+</body>
+</html>

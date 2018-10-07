@@ -1,0 +1,6 @@
+/* menu*/
+.tabpanel{height:29px;line-height:29px;border-bottom:3px solid #4eb2e1;margin:5px;}
+.tabpanel ul li {float:left;margin-right:10px;}
+.tabpanel ul li a{display:inline-block;color:#5b6274;text-decoration:none;padding:0 25px;text-align:center;height:29px;background:#ebeff8;}
+.tabpanel ul li a:hover,.tabpanel ul li a.hover{background:#4eb2e1;color:#fff;}
+.tabpanel ul li a span.tabpanel_close { background-image: url("images/close2.gif");background-repeat:no-repeat;border: 0;display:inline-block;width:16px;height:16px;display:none; }

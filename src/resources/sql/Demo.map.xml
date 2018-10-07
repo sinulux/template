@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+ <!-- 该namespace是面向接口编程的
+ 	      即如果采取接口命名空间，mybatis中我们不需要写接口的实现类
+ 	     只需做好相关配置即可
+  -->
+<mapper namespace="demo">
+	
+	<select id="getStoreCode" resultType="java.lang.Integer">
+		SELECT * FROM exam_code WHERE rid=25
+	</select>
+</mapper>
